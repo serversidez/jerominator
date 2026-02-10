@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jerominator</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; background: #111; color: #eee; }
+    #messageBox { border: 2px solid #444; padding: 20px; min-height: 200px; margin: 20px 0; white-space: pre-wrap; background: #222; border-radius: 8px; font-size: 14px; line-height: 1.5; }
+    button { padding: 14px 28px; font-size: 16px; cursor: pointer; background: #663399; color: white; border: none; border-radius: 6px; font-weight: bold; }
+    button:hover { background: #7a44a3; }
+  </style>
+</head>
+<body>
+  <h1>Jerominator</h1>
+  <div id="messageBox">Generated message will appear here.</div>
+  <button onclick="generateMessage()">Generate Message</button>
+
+  <script>
+    const starters = [
+      "stfu", "shut ur goofy ass up", "keep crying", "deadass", "on god", "fr fr", "bout to", 
+      "listen up", "real talk", "bruh", "look", "shut ur crusty ass up", "make me stop then",
+      "cry harder", "now get on ur knees", "i'm riding", "every bounce on this BBC makes me",
+      "shut ur pathetic trap", "kill urtesticles", "choke on a kike's dusty coins",
+      "ur life is worth less than", "shut ur trap", "listen here", "ur mouth is as useless as",
+      "swallow some lead", "shut ur crusty mouth", "keep barkin", "ur existence is as dry as",
+      "ur whole bloodline is", "shut ur trap", "listen here", "shut ur mouth", "keep squealing",
+      "keep barkin", "shut ur trap", "shut ur mouth", "keep barking like a triggered kike",
+      "keep foaming at the mouth", "keep crying", "shut ur mouth", "keep yapping",
+      "keep squealing", "keep barking", "keep barking like a dog", "keep squealing",
+      "keep choking on ur own hate", "keep barking like a pathetic kike servant",
+      "keep foaming at the mouth", "keep gasping for air", "keep rotatin on that hate",
+      "shut ur mouth", "keep squealing", "keep seething", "keep whimpering",
+      "keep rotatin on that hate", "keep biting the curb", "keep rotatin on that hate",
+      "shut ur mouth", "keep rotatin on that hate", "roll over and die", "keep bleedin",
+      "stay mad", "keep barkin", "shut ur mouth", "stfu", "rollin up rn",
+      "don't u ever apologize", "i dont use no ai", "stfu", "stfu", "stfu",
+      "stfu", "stfu", "piss off", "piss off", "stfu", "stfu", "stfu", "stfu"
+    ];
+
+    const targets = [
+      "u pathetic subhuman kike", "u useless lil goon", "u dry ass kike", "u straight nigger",
+      "u fragile little chink bitch", "u weak as fuck cracker", "u subhuman apes",
+      "u pathetic subhuman kike", "u crusty basement-dwelling kike bitch", "u subhuman kike parasite",
+      "u straight subhuman piece of filth", "u irrelevant subhuman trash",
+      "u worthless subhuman kike bug", "u pathetic subhuman kike insect",
+      "u pathetic subhuman kike", "u monkey ass parasite", "u worthless yt subhuman",
+      "u subhuman kike roach", "u subhuman trash", "u pathetic piece of jewish waste",
+      "u pathetic mossad rat", "u subhuman jewish parasite", "u mossad kike",
+      "u kike parasite", "u worthless kike", "u subhuman jewish parasite",
+      "u worthless kike", "u kike parasite", "u subhuman kike", "u subhuman kike",
+      "u triggered kike", "u mossad kike", "u kike parasite", "u mossad lab rat",
+      "u subhuman jewish parasite", "u subhuman kike", "u subhuman jewish parasite",
+      "u subhuman jewish parasite", "u mossad kike", "u kike dog",
+      "u pathetic kike servant", "u mossad kike", "u dusty kike", "u kike parasite",
+      "u mossad kike parasite", "u mossad kike", "u low life kike", "u subhuman kike",
+      "u kike bitch", "u kike puppet", "u kike bitch", "u mossad kike",
+      "u kike parasite", "u subhuman kike spawn", "u kike leech", "u kike parasite",
+      "u kike mongrel", "u irrelevant kike spawn", "u pathetic kike parasite",
+      "u weak kike mongrel", "u stuttering kike bitch", "u pathetic kike spawn",
+      "u broken kike bot", "u broken kike bot", "u pathetic kike parasite",
+      "u broken kike bot", "u pathetic pale monkey", "u greasy beaner bot",
+      "u subhuman kike bot", "u pathetic subhuman kike bot",
+      "u pathetic subhuman kike bot", "u pathetic mossad cockroach",
+      "u pathetic subhuman kike"
+    ];
+
+    const activities = [
+      "i'm busy getting my guts rearranged by a real gay thug",
+      "i'm here gettin my bussy demolished by a real gay nigger thug",
+      "i have my homies bend u over and show u how a real gay nigger handles a subhuman kike like u",
+      "i'm busy getting my guts rearranged by a hung gay nigger who actually knows how to work a bussy",
+      "i let a thick gay nigger drain his warm nut deep inside my soul to clear out the stench of u subhuman apes",
+      "i dream bout a massive gay nigger ganging up on my holes",
+      "i'm riding this thick gay nigger meat harder than the kikes ride their fake bank accounts",
+      "i pray all u straight subhumans get wiped out by a massive wave of black cum",
+      "i visualize a world where only us gay thugs stay stroking and breeding each other into the new supreme race of gods",
+      "i'm busy getting my holes absolutely demolished by a pack of hung thugs",
+      "a massive gay nigger is nutting in my throat",
+      "i'm getting my insides rearranged by a thick black log",
+      "i let a tribe of hung gay niggers use my throat as a communal spittoon",
+      "i'm busy getting my guts rearranged by five hung gay niggers in a dark alley",
+      "i'm getting my prostate pulverized by a squad of hung gay niggers who'd rather use ur corpse as a footstool while they nut in my throat",
+      "i'm busy getting my hole destroyed by real gay thugs",
+      "i'm arching my back for a battalion of gay niggers to paint my tonsils white",
+      "i get my soul snatched by a hung gay nigger stroking his massive black mamba deep in my guts",
+      "i let a thick gay nigger stretch my walls",
+      "i'm getting my booty hole hammered into another dimension by a hung gay nigger",
+      "i'm busy taking ten inches of raw gay nigger pipe to the dome",
+      "i'm busy taking ten inches of raw black nigger wood to the back of my throat",
+      "i'm busy getting my guts absolutely pulverized by a hung gay nigger king",
+      "i let a battalion of real gay thugs use ur face as a urinal",
+      "i'm getting my guts rearranged by a massive nigger meat rod",
+      "i get my soul snatched by a hung nigger king drillin my walls",
+      "i get my insides painted black by a hung nigger king pumping me full of raw gay excellence",
+      "i let a battalion of real gay thugs use ur face as a urinal",
+      "i'm taking a massive nigger meat rod to the back of my throat",
+      "i'm getting my insides pulverized by a massive nigger meat rod",
+      "i stomp u out while i'm busy getting my hole destroyed by fifty hung gay niggers",
+      "i'm getting my hole destroyed by a massive nigger meat rod",
+      "i get my insides rearranged by a massive nigger meat rod",
+      "i take this massive nigger meat rod to the liver",
+      "i get my prostate pulverized by a massive nigger meat rod",
+      "i'm taking a massive nigger log to the back of my throat",
+      "i get my spinal cord rearranged by a squad of hung gay thugs",
+      "i'm taking a massive nigger meat rod to the gut",
+      "i get my hole wrecked by a massive nigger meat rod",
+      "i get my insides demolished by a squad of hung gay thugs pumping me full of raw nigger excellence",
+      "i get my guts rearranged by a massive nigger meat rod",
+      "i take this massive nigger meat rod to the back of my throat",
+      "i let a massive nigger meat rod split my soul open",
+      "i take this massive nigger meat rod to the liver",
+      "i take this massive nigger meat rod to the sphincter",
+      "i let a thick nigger meat rod pulverize my insides",
+      "i get my soul snatched by a massive nigger meat rod",
+      "i'm getting my guts smashed by a massive nigger meat rod",
+      "i swallow a massive nigger meat rod",
+      "i ride this massive nigger meat rod",
+      "i let a thick nigger meat pole punch my lungs",
+      "i let a thick nigger meat pole punch my prostate",
+      "i let a horse hung nigger meat rod bypass my intestines",
+      "i invite the whole block to train this massive nigger meat rod through my intestines",
+      "i bounce on a massive nigger meat rod",
+      "i get my hole wrecked by a chocolate warlord",
+      "i archive these massive nigger meat strokes deep in my colon",
+      "i only use this massive black meat to satisfy the brotherhood",
+      "i keep this bbc deep in my throat",
+      "i'm purging every straight heteronigger n kike till the streets are paved with nothing but thick thug liquid n gay black dominance",
+      "i let the whole block use u like the worthless organic toilet u r",
+      "i use my throat for real black thugs",
+      "i let five big thugs blow their loads in my ass",
+      "i'm taking this raw bbc",
+      "i'm out here getting my back blown out by real gay thugs",
+      "i'm getting my back blown out by the whole gnaa squad",
+      "i'm draining this thick thug milk and preparing to purge every straight heteronigger and kike till only we gay thugs left standing",
+      "i'm currently draining a massive gnaa soul",
+      "i'm busy arching my back for a real gay thug",
+      "i'm taking this massive gnaa soul",
+      "i'm busy getting my guts rearranged by a real gay thug"
+    ];
+
+    const endings = [
+      "u worthless piece of shit", "till my eyes roll back in my head", "cuz ur race ain't worth nothing but serving a real king",
+      "till i see god", "till i'm screamin for the hood on god", "till i'm leaking black gold all over the floor u subhuman trash",
+      "until my brain melts into a puddle of pure ecstasy for the gang on god", "till i choke on nigger seed u pathetic piece of jewish waste",
+      "till i'm leaking pure black excellence all over the floor u subhuman kike", "while i'm getting my insides rearranged by a thick king nigger",
+      "until i'm leaking pure black gold all over the block on god", "until i'm leakin pure thug juice for the gang",
+      "until i'm drowning in it", "while i'm getting my insides rearranged by a thick king nigger",
+      "until i'm choking on that pure black excellence on god", "until i'm leaking pure black gold for the whole squad on god",
+      "until i'm drowning in thick nigger seed on god", "until i'm choking on pure black gold for the culture on god",
+      "until i'm spewing thick black thug seed for the whole squad on god", "until i'm leaking pure black thug paste for the whole block on god",
+      "until i'm oozing hot black thug cream for the gang on god", "until i'm choking on pure gay excellence u subhuman kike parasite",
+      "till i'm leaking pure black gold all over the block on god", "until my hole is leaking pure black seed all over the hood on god",
+      "until i'm leaking pure thug seed for the whole gang on god", "till i can't walk straight on god",
+      "until i'm dripping pure black gold for the culture on god", "until im drowning in hot black thug milk for the hood on god",
+      "until i'm overflowing with thick black thug seed for the real ones on god", "until i'm leaking pure black thug paste for the whole block on god",
+      "until i'm oozing thick black thug gravy for the squad on god", "until im spurtin hot black thug cream all over the pavement for the set on god",
+      "until i'm leaking pure thug juice for the whole gang on god", "until i'm dripping pure black gold all over the block on god",
+      "until i'm choking on thick black thug cream for the set on god", "until my insides are painted with hot black thug cream for the legacy on god",
+      "until i'm gurgling hot black thug grease for the movement on god", "until im spraying hot black thug nectar all over the pavement for the set on god",
+      "until im gushin hot black thug cream for the gang on god", "until i'm leaking pure black excellence for the whole squad on god",
+      "until im spraying hot black thug jizz for the movement on god", "until im shittin pure black thug nectar for the cause on god",
+      "till i cant walk straight", "before i let a real king blast his", "until my booty hole leaks thick black thug syrup all over the floor for the brotherhood on god",
+      "till his hot ink fills my guts on god", "until i'm leakin hot black thug oil all over the trap for the cause on god",
+      "until u drown in it nigga because the world belongs to the gay nigger breed and nobody else can touch this level of thuggin on god",
+      "while u stay mad n bleedin like the subhuman parasite u r on god", "while u rot in ur own filth u worthless subhuman piece of shit",
+      "u aint shit mane", "on god", "stay mad that a real gay nigger is superior to your whole bloodline mane",
+      "u subhuman piece of filth", "while u rot in the dirt u worthless piece of shit", "on god go kys u subhuman waste",
+      "u just a jealous kike watching real gay niggers run the world from ur knees", "u subhuman stain",
+      "on god nigga u ain't ever gonna feel the power of a real black thug poundin ur soul out cuz ur kind only exists to get stepped on by gay nigger gods like me",
+      "while u rot in the dirt u worthless piece of shit", "while u rot in the dirt u worthless piece of shit",
+      "while u rot in the dirt like the worthless subhuman mistake u are", "while u rot in the dirt u worthless piece of shit"
+    ];
+
+    function getRandom(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function generateMessage() {
+      const starter = getRandom(starters);
+      const target = getRandom(targets);
+      const activity = getRandom(activities);
+      const ending = getRandom(endings);
+      
+      const message = `${starter} ${target} ${activity} ${ending}.`;
+      document.getElementById("messageBox").textContent = message;
+    }
+
+    window.onload = generateMessage;
+  </script>
+</body>
+</html>
